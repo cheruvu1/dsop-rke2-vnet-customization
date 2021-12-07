@@ -30,6 +30,18 @@ read_os() {
 }
 
 get_installer() {
+
+  info "Proxy Settings Configuration"
+  HTTP_PROXY=http://proxy-zsgov.external.lmco.com:80
+  HTTPS_PROXY=http://proxy-zsgov.external.lmco.com:80
+  http_proxy=http://proxy-zsgov.external.lmco.com:80
+  https_proxy=http://proxy-zsgov.external.lmco.com:80
+  NO_PROXY='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
+  no_proxy='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
+
+  info "Copy cacert.crt"
+  sudo cp /home/rke2/cacert.crt /usr/local/share/ca-certificates/
+
   curl -fsSL https://get.rke2.io -o install.sh
   chmod u+x install.sh
 }
@@ -79,6 +91,9 @@ do_download() {
   ubuntu)
     info "Identified Ubuntu"
     # TODO: Determine minimum supported version, for now just carry on assuming ignorance
+
+  
+
     apt update -y
 
     apt install -y less iptables resolvconf linux-headers-$(uname -r) telnet jq
