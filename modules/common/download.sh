@@ -40,7 +40,7 @@ get_installer() {
   export no_proxy='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
 
   info "Copy cacert.crt"
-  sudo cp /home/rke2/cacert.crt /usr/local/share/ca-certificates/
+  cp /home/rke2/cacert.crt /usr/local/share/ca-certificates/
 
   curl -fsSL https://get.rke2.io -o install.sh
   chmod u+x install.sh
