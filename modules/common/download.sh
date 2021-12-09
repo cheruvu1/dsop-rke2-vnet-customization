@@ -32,12 +32,12 @@ read_os() {
 get_installer() {
 
   info "Proxy Settings Configuration"
-  HTTP_PROXY=http://proxy-zsgov.external.lmco.com:80
-  HTTPS_PROXY=http://proxy-zsgov.external.lmco.com:80
-  http_proxy=http://proxy-zsgov.external.lmco.com:80
-  https_proxy=http://proxy-zsgov.external.lmco.com:80
-  NO_PROXY='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
-  no_proxy='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
+  export HTTP_PROXY=http://proxy-zsgov.external.lmco.com:80
+  export HTTPS_PROXY=http://proxy-zsgov.external.lmco.com:80
+  export http_proxy=http://proxy-zsgov.external.lmco.com:80
+  export https_proxy=http://proxy-zsgov.external.lmco.com:80
+  export NO_PROXY='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
+  export no_proxy='*.lmco.com,169.254.169.254,192.91.147.*,localhost'
 
   info "Copy cacert.crt"
   sudo cp /home/rke2/cacert.crt /usr/local/share/ca-certificates/
